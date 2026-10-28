@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_delivery_carrier_form" model="ir.ui.view">
+        <field name="name">delivery.carrier.form.melhorenvio</field>
+        <field name="model">delivery.carrier</field>
+        <field name="inherit_id" ref="delivery.view_delivery_carrier_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="before">
+                <header>
+                    <button
+                        name="action_melhorenvio_sync_services"
+                        type="object"
+                        string="Synchronize Melhor Envio Services"
+                        class="btn-primary"
+                        invisible="delivery_type != 'melhorenvio'"
+                    />
+                </header>
+            </xpath>
+            <group name="delivery_details" position="after">
+                <group
+                    name="melhorenvio"
+                    string="Melhor Envio"
+                    invisible="delivery_type != 'melhorenvio'"
+                >
+                    <field name="melhorenvio_token" password="True" />
+                    <field name="melhorenvio_company_name" />
+                    <field name="melhorenvio_service_name" />
+                    <field name="melhorenvio_service_id" />
+                    <field name="melhorenvio_package_length" string="Box Length (cm)" />
+                    <field name="melhorenvio_package_width" string="Box Width (cm)" />
+                    <field name="melhorenvio_package_height" string="Box Height (cm)" />
+                    <field name="melhorenvio_receipt" />
+                    <field name="melhorenvio_own_hand" />
+                </group>
+            </group>
+        </field>
+    </record>
+</odoo>
